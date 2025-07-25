@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #1e3a8a;
+        padding: 20px;
+      }
+      .card {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: auto;
+      }
+      h2 {
+        color: #333333;
+      }
+      p {
+        margin: 8px 0;
+        color: #555555;
+      }
+      .label {
+        font-weight: bold;
+        color: #222222;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Application Confirmation</h2>
+      <p>Dear {{ application.student_name }},</p>
+      <p>
+        Thank you for applying to
+        <strong>{{ application.program_applied.title }}</strong> at Techminds
+        Academy!
+      </p>
+
+      <hr />
+
+      <p>
+        <span class="label">Program:</span> {{ application.program_applied.title }}
+      </p>
+      <p>
+        <span class="label">Category:</span> {{ application.program_applied.category|default:"N/A" }}
+      </p>
+      <p>
+        <span class="label">Duration:</span> {{ application.program_applied.duration|default:"N/A" }}
+      </p>
+      <p>
+        <span class="label">Fee:</span> {{ application.program_applied.fee|default:"N/A" }}
+      </p>
+      <p>
+        <span class="label">Description:</span> {{ application.program_applied.description|truncatechars:200|default:"N/A" }}
+      </p>
+      <p>
+        <span class="label">Curriculum:</span> {{ application.program_applied.curriculum|truncatechars:200|default:"N/A" }}
+      </p>
+      <p>
+        <span class="label">Job Prospects:</span> {{ application.program_applied.job_prospects|truncatechars:200|default:"N/A" }}
+      </p>
+      <p><span class="label">Status:</span> {{ application.status }}</p>
+
+      <hr />
+
+      <p><strong>Payment Instructions:</strong></p>
+      <p>
+        Please make payment within 7 days to secure your seat. Contact us for
+        payment methods.
+      </p>
+
+      <p>
+        <strong>Contact Info:</strong><br />
+        Email: admissions@techmindsacademy.org<br />
+        Phone: +2348147328332<br />
+        Website: www.techmindsacademy.org
+      </p>
+
+      <p>We’ll be in touch soon. Feel free to reach out with any questions!</p>
+
+      <p>
+        Best regards,<br />
+        <strong>Techminds Academy Team</strong>
+      </p>
+      <div style="margin-top: 15px;">
+        <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd" />
+
+        <p style="font-size: 13px; color: #888888; text-align: center">
+          This is an automated message from <strong>Techminds Academy</strong>.
+          Please do not reply directly to this email.<br />
+          For inquiries, contact us at
+          <a href="mailto:admissions@techmindsacademy.org" style="color: #555"
+            >admissions@techmindsacademy.org</a
+          >
+          or visit our website:
+          <a href="https://www.techmindsacademy.org" style="color: #555"
+            >www.techmindsacademy.org</a
+          >.
+        </p>
+
+        <p style="font-size: 12px; color: #aaaaaa; text-align: center">
+          © {{ year }} Techminds Academy. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

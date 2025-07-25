@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{{ program.title }} - Techminds Academy{% endblock %}
+{% block content %}
+    <section style="padding: 60px 0; background: #f3f4f6; color: #1e3a8a; text-align: center;">
+        <div class="container">
+            <h1>{{ program.title }}</h1>
+            <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                <h2>Overview</h2>
+                <p>{{ program.description|default:"No overview available" }}</p>
+                <h2>Curriculum</h2>
+                <ul>
+                    {% for item in program.curriculum_list %}
+                        <li>{{ item }}</li>
+                    {% empty %}
+                        <li>No curriculum details available</li>
+                    {% endfor %}
+                </ul>
+                <h2>Duration</h2>
+                <p>{{ program.duration|default:"Duration not specified" }}</p>
+                <h2>Job Prospects</h2>
+                <p>{{ program.job_prospects|default:"Job prospects not specified" }}</p>
+                <h2>Fee</h2>
+                <p>{{program.fee|default:"Fee not specified"}}</p>
+                <div style="margin-top: 2rem;">
+                    <a href="{% url 'contact' %}" class="btn-primary" style="margin-right: 1rem;">More Details</a>
+                    <a href="{% url 'apply' %}" class="btn-secondary" style="border-color: #1e3a8a; color: #1e3a8a;">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

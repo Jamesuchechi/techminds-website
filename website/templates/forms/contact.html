@@ -1,0 +1,80 @@
+{% load static %}
+<form method="post" class="contact-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+        {{ form.name }}
+        {% if form.name.errors %}
+            <div class="error" style="color: red; font-size: 0.9rem;">{{ form.name.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+            <div class="error" style="color: red; font-size: 0.9rem;">{{ form.email.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.phone_number.id_for_label }}">{{ form.phone_number.label }}</label>
+        {{ form.phone_number }}
+        <small style="color: #666;">{{ form.phone_number.help_text }}</small>
+        {% if form.phone_number.errors %}
+            <div class="error" style="color: red; font-size: 0.9rem;">{{ form.phone_number.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.inquiry_type.id_for_label }}">{{ form.inquiry_type.label }}</label>
+        {{ form.inquiry_type }}
+        {% if form.inquiry_type.errors %}
+            <div class="error" style="color: red; font-size: 0.9rem;">{{ form.inquiry_type.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group" id="custom-subject-group">
+        <label for="{{ form.custom_subject.id_for_label }}">{{ form.custom_subject.label }}</label>
+        {{ form.custom_subject }}
+        {% if form.custom_subject.errors %}
+            <div class="error" style="color: red; font-size: 0.9rem;">{{ form.custom_subject.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+        {{ form.message }}
+        <small style="color: #666;">{{ form.message.help_text }}</small>
+        {% if form.message.errors %}
+            <div class="error" style="color: red; font-size: 0.9rem;">{{ form.message.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label class="form-check-label" for="{{ form.subscribe_newsletter.id_for_label }}">
+            {{ form.subscribe_newsletter }} {{ form.subscribe_newsletter.label }}
+        </label>
+        {% if form.subscribe_newsletter.errors %}
+            <div class="error" style="color: red; font-size: 0.9rem;">{{ form.subscribe_newsletter.errors }}</div>
+        {% endif %}
+    </div>
+    <button type="submit" class="submit-btn">Send Message</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const inquiryTypeSelect = document.getElementById('inquiry-type-select');
+    const customSubjectGroup = document.getElementById('custom-subject-group');
+    const customSubjectField = document.getElementById('custom-subject-field');
+
+    function toggleCustomSubject() {
+        if (inquiryTypeSelect.value === 'other') {
+            customSubjectGroup.style.display = 'block';
+            customSubjectField.style.display = 'block';
+            customSubjectField.setAttribute('required', 'required');
+        } else {
+            customSubjectGroup.style.display = 'none';
+            customSubjectField.style.display = 'none';
+            customSubjectField.removeAttribute('required');
+        }
+    }
+
+    inquiryTypeSelect.addEventListener('change', toggleCustomSubject);
+    toggleCustomSubject(); // Run on page load
+});
+</script>

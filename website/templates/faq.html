@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}FAQ - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 100px 0; background: white; text-align: center;">
+    <div class="container">
+        <h1 class="wow">Frequently Asked Questions</h1>
+        <p class="awwn">Get answers to common queries about our academy and programs.</p>
+        <div style="max-width: 800px; margin: 2rem auto; text-align: left;">
+            <details style="margin-bottom: 1rem; padding: 1rem; background: #f5f7fa; border-radius: 10px;">
+                <summary style="font-weight: 600; color: #1e3a8a;">What programs do you offer?</summary>
+                <p>We offer Software Development, AI, Cybersecurity, Cloud Computing, Data Science, and UI/UX Design.</p>
+            </details>
+            <details style="margin-bottom: 1rem; padding: 1rem; background: #f5f7fa; border-radius: 10px;">
+                <summary style="font-weight: 600; color: #1e3a8a;">How do I apply?</summary>
+                <p>Visit our Admissions page for details and start your application.</p>
+            </details>
+        </div>
+        <a href="/contact/" class="btn-primary">Ask More</a>
+    </div>
+</section>
+{% endblock %}

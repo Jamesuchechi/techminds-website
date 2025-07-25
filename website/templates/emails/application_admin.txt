@@ -1,0 +1,18 @@
+New application received:
+
+Name: {{ application.student_name }}
+Email: {{ application.email }}
+Phone Number: {{ application.phone_number }}
+Program: {{ application.program_applied.title }}
+Category: {{ application.program_applied.category|default:"N/A" }}
+Duration: {{ application.program_applied.duration|default:"N/A" }}
+Fee: {{ application.program_applied.fee|default:"N/A" }}
+Description: {{ application.program_applied.description|truncatechars:200|default:"N/A" }}
+Job Prospects: {{ application.program_applied.job_prospects|truncatechars:200|default:"N/A" }}
+Attestation: 
+{% if application.attestation %}
+{{ application.attestation.url }}
+{% else %}
+Not provided
+{% endif %}
+Status: {{ application.status }}

@@ -1,0 +1,40 @@
+Dear {{ application.student_name }},
+
+Thank you for applying to {{ application.program_applied.title }} at Techminds Academy!
+
+====================
+Application Summary:
+====================
+Name: {{ application.student_name }}
+Email: {{ application.email }}
+Phone: {{ application.phone_number }}
+Status: {{ application.status }}
+
+====================
+Program Details:
+====================
+Title: {{ application.program_applied.title }}
+Category: {{ application.program_applied.category|default:"N/A" }}
+Duration: {{ application.program_applied.duration|default:"N/A" }}
+Fee: {{ application.program_applied.fee|default:"N/A" }}
+Description: {{ application.program_applied.description|truncatechars:200|default:"N/A" }}
+Curriculum: {{ application.program_applied.curriculum|truncatechars:200|default:"N/A" }}
+Job Prospects: {{ application.program_applied.job_prospects|truncatechars:200|default:"N/A" }}
+
+====================
+Payment Instructions:
+====================
+Please make payment within 7 days to secure your seat. 
+For payment methods, contact us via the details below.
+
+====================
+Contact Info:
+====================
+Email: admissions@techmindsacademy.com
+Phone: +123-456-7890
+Website: www.techmindsacademy.com
+
+We will review your application and follow up shortly. Feel free to reach out with any questions.
+
+Best regards,  
+Techminds Academy Team

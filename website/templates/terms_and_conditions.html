@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block content %} 
+<div style="text-align: center;">
+    <!-- <h1>Terms and Conditions of Techminds Academy</h1>  -->
+    {% if terms %} 
+    <div class="terms-content" style="white-space: pre-wrap; display: inline-block; text-align: left;"> 
+        <h1>Terms and Conditions of Techminds Academy</h1>
+        {{ terms.content|safe }} 
+    </div> 
+    <p><strong>Version:</strong> {{ terms.version }}</p> 
+    <p><strong>Last Updated:</strong> {{ terms.updated_at|date:"F d, Y" }}</p> 
+    {% else %} 
+    <p>No active terms and conditions available.</p> 
+    {% endif %} 
+</div>
+{% endblock %}

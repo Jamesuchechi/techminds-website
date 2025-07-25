@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Contact Form - Techminds Academy{% endblock %}
+{% block content %}
+    <section id="contact-form" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
+            <div class="contact-form">
+                {% include 'forms/contact.html' %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

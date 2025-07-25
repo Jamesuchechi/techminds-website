@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block title %}Facilities - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 100px 0; background: #eef2f7; text-align: center;">
+    <div class="container">
+        <h1 class="wow section-title">World-Class Facilities</h1>
+        <p class="awwn">Explore the cutting-edge resources available to our students.</p>
+        
+        {% if facilities %}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                {% for facility in facilities %}
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease; border-left: 4px solid #3498db;">
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 600;">{{ facility.author }}</h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 1rem; text-align: left;">{{ facility.description|truncatewords:25 }}</p>
+                    
+                    {% if facility.location %}
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: #7f8c8d;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                        <span style="font-size: 0.9rem;">{{ facility.location }}</span>
+                    </div>
+                    {% endif %}
+                    
+                    <div style="border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.8rem; color: #999;">
+                        Added on {{ facility.created_at|date:"F j, Y" }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div style="margin-top: 3rem; color: #666;">
+                <p>Total Facilities: {{ total_facilities }}</p>
+            </div>
+        {% else %}
+            <div style="margin-top: 3rem;">
+                <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">No Facilities Available</h3>
+                    <p style="color: #666;">Facilities information will be displayed here once added by administrators.</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<style>
+.container > div > div:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .container > div {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block title %}Testimonials - Techminds Academy{% endblock %}
+{% block content %}
+    <section class="fade-in" style="padding: 100px 0; background: #f8fafc; text-align: center;">
+        <div class="container">
+            <h2 class="section-title">Testimonials & Documentaries</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                {% for testimonial in testimonials %}
+                    <div class="about-card">
+                        <p>"{{ testimonial.quote|safe }}"</p>
+                        <p><strong>- {{ testimonial.author }}</strong></p>
+                        {% if testimonial.event %}<p>Event: {{ testimonial.event }}</p>{% endif %}
+                        <p style="color: #666;">{{ testimonial.created_at|date:"F d, Y" }}</p>
+                    </div>
+                {% empty %}
+                    <p>No testimonials available.</p>
+                {% endfor %}
+                <!-- Hardcoded initial video sample -->
+                <div class="about-card animate-on-scroll">
+                    <h3>Sample Documentary</h3>
+                    <p>Watch our introductory documentary showcasing Techminds Academy's journey.</p>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="color: #1e3a8a; text-decoration: none; padding: 0.5rem 1rem; background: #e0e7ff; border-radius: 5px;">Watch</a>
+                </div>
+                {% for video in videos %}
+                    <div class="about-card animate-on-scroll">
+                        <h3>{{ video.title }}</h3>
+                        <p>{{ video.description|safe }}</p>
+                        {% if video.thumbnail %}
+                            <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}" style="width: 100%; max-width: 200px; border-radius: 8px; margin: 1rem 0;">
+                        {% endif %}
+                        <a href="{{ video.video_url }}" target="_blank" style="color: #1e3a8a; text-decoration: none; padding: 0.5rem 1rem; background: #e0e7ff; border-radius: 5px;">Watch</a>
+                    </div>
+                {% empty %}
+                    <p>No videos available.</p>
+                {% endfor %}
+            </div>
+            <p style="margin-top: 2rem; color: #666;">Last updated: {{ current_time|date:"F d, Y, H:i A" }}</p>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.about-card');
+            cards.forEach(card => {
+                card.classList.add('wow', 'fadeInUp');
+            });
+        });
+    </script>
+{% endblock %}

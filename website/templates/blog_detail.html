@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }} - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 100px 0; background: #eef2f7; text-align: left;">
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+        <p class="text-muted">Posted on {{ post.date_published|date:"F d, Y" }} by {{ post.author.username }}</p>
+        <p class="category">Category: {{ post.category }}</p>
+        <div class="content">
+            {{ post.content|safe }}
+        </div>
+        <a href="{% url 'blog' %}" class="btn btn-primary mt-4">Back to Blog</a>
+    </div>
+</section>
+{% endblock %}

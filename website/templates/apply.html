@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block hero %} {% endblock %}
+{% block title %}Apply - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 120px 0; background: linear-gradient(135deg, hwb(221 31% 11%) 0%, hsl(227, 98%, 64%) 100%); color: #1e3a8a; text-align: center;">
+    <div class="container">
+        <h1 class="wow">Start Your Journey</h1>
+        <p class="awwn">Apply now to join our world-class tech programs and shape your future!</p>
+        {% if messages %}
+            {% for message in messages %}
+                <p class="message {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <div style="margin-top: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+            <form action="{% url 'apply' %}" method="post" enctype="multipart/form-data" style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div style="color: red; margin-bottom: 1rem; text-align: left;">
+                        <p>Please correct the errors below:</p>
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    <label for="{{ form.student_name.id_for_label }}">Full Name</label>
+                    {{ form.student_name }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    <label for="{{ form.email.id_for_label }}">Email Address</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                    {{ form.phone_number }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    <label for="{{ form.attestation.id_for_label }}">Why I Should be Accepted</label>
+                    {{ form.attestation }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    <label for="{{ form.program_applied.id_for_label }}">Programs</label>
+                    {{ form.program_applied }}
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem; text-align: left;">
+                    <label for="{{ form.age.id_for_label }}">Age</label>
+                    {{ form.age }}
+                </div>
+                <div class="form-group row" style="margin-bottom: 1rem; text-align: left;">
+                    <div>
+                    <input type="checkbox" name="agreement" id="{{ form.agreement.id_for_label }}" required>
+                    </div>
+                    <label for="{{ form.agreement.id_for_label }}" class="small-text" style="font-size: small;">
+                        I agree to the 
+                        <a href="{% url 'terms_conditions' %}" target="_blank" title="terms and conditions">terms and conditions</a> of Techminds Academy
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 0.75rem; border: none; border-radius: 4px; background: #1e3a8a; color: white; font-weight: 600;">Submit Application</button>
+            </form>
+        </div>
+        <div style="margin-top: 2rem;">
+            <a href="{% url 'admission_requirements' %}" class="btn-primary">View Requirements</a>
+            <a href="{% url 'contact' %}" class="btn-secondary" style="border-color: #1e3a8a; color: #1e3a8a;">Get Assistance</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

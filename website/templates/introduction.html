@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Introduction - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 120px 0; background: linear-gradient(135deg, #2b2d42, #4a4e69); color: #f5f5f5; text-align: center;">
+    <div class="container">
+        <h1 class="wow" style="font-size: 3.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; animation: pulse 2.5s infinite;">Shape Your Tech Future with Techminds Academy</h1>
+        <p class="awwn" style="font-size: 1.6rem; font-weight: 300; margin: 1.8rem 0; opacity: 0.85;">Where Vision Meets Mastery in the Digital Age</p>
+        <p style="max-width: 950px; margin: 2.5rem auto; font-size: 1.25rem; line-height: 1.9; font-weight: 400;">At Techminds Academy, we’re redefining tech education by empowering dreamers to become innovators. Our cutting-edge programs—spanning immersive coding bootcamps, AI-driven workshops, and blockchain innovation labs—are crafted to equip you with practical skills and a fearless mindset. Guided by world-class mentors and surrounded by a vibrant community of forward-thinkers, you’ll not only master the tools of today but also shape the technologies of tomorrow. Step into a world where your potential is limitless, and your journey to tech excellence begins with us.</p>
+        <a href="#enroll" class="btn" style="background: #e07a5f; color: #ffffff; padding: 15px 35px; border-radius: 30px; font-weight: 600; text-transform: uppercase; transition: transform 0.3s; display: inline-block;">Start Your Journey Today</a>
+    </div>
+</section>
+<style>
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+    }
+    .btn:hover { transform: scale(1.1); }
+</style>
+{% endblock %}

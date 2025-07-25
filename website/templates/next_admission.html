@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block title %}Next Admission - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 120px 0; background: linear-gradient(135deg, #facc15 0%, #fde047 100%); color: #1e3a8a; text-align: center;">
+    <div class="container">
+        <h1 class="wow">Next Admission</h1>
+        <p class="awwn">Join our upcoming programs! Check the admission details below.</p>
+        {% if admissions %}
+            {% for admission in admissions %}
+                <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); max-width: 600px; margin: 2rem auto;">
+                    <h2>{{ admission.title }}</h2>
+                    {% if admission.banner_image %}
+                        <img src="{{ admission.banner_image.url }}" alt="{{ admission.title }}" style="max-width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+                    {% endif %}
+                    <p><strong>Start Date:</strong> {{ admission.start_date|date:"F d, Y" }}</p>
+                    <p><strong>Next Admission:</strong> {{ admission.next_admission|date:"F d, Y" }}</p>
+                    <p>{{ admission.description }}</p>
+                    <a href="{% url 'apply' %}" class="btn-primary" style="display: inline-block; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; background: #1e3a8a; color: white; font-weight: 600; text-decoration: none;">Apply Now</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No upcoming admissions at this time. Check back later!</p>
+        {% endif %}
+        <div style="margin-top: 2rem;">
+            <a href="{% url 'admission_requirements' %}" class="btn-primary" style="padding: 0.75rem 1.5rem; border: none; border-radius: 4px; background: #1e3a8a; color: white; font-weight: 600; text-decoration: none;">View Requirements</a>
+            <a href="{% url 'contact' %}" class="btn-secondary" style="padding: 0.75rem 1.5rem; border: 2px solid #1e3a8a; color: #1e3a8a; border-radius: 4px; text-decoration: none;">Get Assistance</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block title %}Resources - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 100px 0; background: #eef2f7; text-align: center;">
+    <div class="container">
+        <h1 class="wow section-title">Student Resources</h1>
+        <p class="awwn">Tools and materials to support your learning journey.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+            {% for resource in resources %}
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+                    <h3>{{ resource.title }}</h3>
+                    <p><strong>Category:</strong> {{ resource.get_category_display }}</p>
+                    <p>{{ resource.description|truncatewords:20 }}</p>
+                    {% if resource.file %}
+                        {% if resource.file.url|slice:"-4:" == ".pdf" or resource.file.url|slice:"-5:" == ".epub" %}
+                            <a href="{{ resource.file.url }}" target="_blank" class="btn btn-primary">Read/Download {{ resource.file.url|slice:"-4:"|upper|default:"File" }}</a>
+                        {% else %}
+                            <a href="{{ resource.file.url }}" download>Download {{ resource.file.name|slice:"-4:"|upper|default:"File" }}</a>
+                        {% endif %}
+                    {% endif %}
+                    {% if resource.image %}
+                        <img src="{{ resource.image.url }}" alt="{{ resource.title }}" style="max-width: 200px;">
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>No resources available at this time.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block title %}Programs - Techminds Academy{% endblock %}
+{% block content %}
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title" style="color: wheat;">Our Programs</h2>
+            <div class="programs-grid">
+                <!-- Hardcoded Programs as Fallback -->
+                <!-- <div class="program-card">
+                    <h3>🖥 Software Development</h3>
+                    <p>Master modern programming languages and frameworks</p>
+                    <ul>
+                        <li>Full-Stack Web Development</li>
+                        <li>Mobile App Development</li>
+                        <li>Database Management</li>
+                        <li>API Development</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 1 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>🤖 Artificial Intelligence</h3>
+                    <p>Explore the future of intelligent systems</p>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Deep Learning</li>
+                        <li>Natural Language Processing</li>
+                        <li>Computer Vision</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 2 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>📊 Data Science</h3>
+                    <p>Unlock insights from data with advanced analytics</p>
+                    <ul>
+                        <li>Data Analysis and Visualization</li>
+                        <li>Statistical Modeling</li>
+                        <li>Big Data Technologies</li>
+                        <li>Predictive Analytics</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 3 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>🔒 Cybersecurity</h3>
+                    <p>Protect systems and data from digital threats</p>
+                    <ul>
+                        <li>Network Security</li>
+                        <li>Ethical Hacking</li>
+                        <li>Incident Response</li>
+                        <li>Cryptography</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 4 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>☁ Cloud Computing</h3>
+                    <p>Build and manage scalable cloud-based solutions</p>
+                    <ul>
+                        <li>Cloud Architecture</li>
+                        <li>AWS, Azure, and GCP</li>
+                        <li>Serverless Computing</li>
+                        <li>Cloud Security</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 5 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>⚙ DevOps</h3>
+                    <p>Streamline development and operations workflows</p>
+                    <ul>
+                        <li>CI/CD Pipelines</li>
+                        <li>Containerization (Docker, Kubernetes)</li>
+                        <li>Infrastructure as Code</li>
+                        <li>Monitoring and Automation</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 6 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>⛓ Blockchain Development</h3>
+                    <p>Create decentralized and secure applications</p>
+                    <ul>
+                        <li>Smart Contracts</li>
+                        <li>Cryptocurrency Development</li>
+                        <li>Distributed Ledger Technology</li>
+                        <li>Blockchain Security</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 7 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>📣 Digital Marketing</h3>
+                    <p>Drive online engagement and business growth</p>
+                    <ul>
+                        <li>SEO and SEM</li>
+                        <li>Social Media Marketing</li>
+                        <li>Content Marketing</li>
+                        <li>Analytics and Reporting</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 8 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>🎨 UI/UX Design</h3>
+                    <p>Create user-friendly and visually appealing interfaces</p>
+                    <ul>
+                        <li>User Research and Testing</li>
+                        <li>Wireframing and Prototyping</li>
+                        <li>Interaction Design</li>
+                        <li>Design Systems</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 9 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>📱 Mobile Game Development</h3>
+                    <p>Build engaging games for mobile platforms</p>
+                    <ul>
+                        <li>Game Design Principles</li>
+                        <li>Unity and Unreal Engine</li>
+                        <li>2D and 3D Graphics</li>
+                        <li>Multiplayer Integration</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 10 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>🧠 Data Engineering</h3>
+                    <p>Design and manage robust data pipelines</p>
+                    <ul>
+                        <li>Data Warehousing</li>
+                        <li>ETL Processes</li>
+                        <li>Data Integration</li>
+                        <li>Scalable Data Systems</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 11 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div>
+                <div class="program-card">
+                    <h3>🌐 Internet of Things (IoT)</h3>
+                    <p>Develop connected devices for smart solutions</p>
+                    <ul>
+                        <li>IoT Architecture</li>
+                        <li>Sensor Integration</li>
+                        <li>Edge Computing</li>
+                        <li>IoT Security</li>
+                    </ul>
+                    <a href="{% url 'program_detail' 12 %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                </div> -->
+
+                <!-- Dynamic Programs from Database -->
+                {% for program in programs %}
+                    <div class="program-card animate-on-scroll">
+                        <h3>
+                            {% if program.title == "Software Development" %}🖥
+                            {% elif program.title == "Artificial Intelligence" %}🤖
+                            {% elif program.title == "Data Science" %}📊
+                            {% elif program.title == "Cybersecurity" %}🔒
+                            {% elif program.title == "Cloud Computing" %}☁
+                            {% elif program.title == "DevOps" %}⚙
+                            {% elif program.title == "Blockchain Development" %}⛓
+                            {% elif program.title == "Digital Marketing" %}📣
+                            {% elif program.title == "UI/UX Design" %}🎨
+                            {% elif program.title == "Mobile Game Development" %}📱
+                            {% elif program.title == "Data Engineering" %}🧠
+                            {% elif program.title == "Internet of Things (IoT)" %}🌐
+                            {% endif %}
+                            {{ program.title }}
+                        </h3>
+                        <p>{{ program.description|default:"No description available" }}</p>
+                        <ul>
+                            {% for item in program.curriculum_list %}
+                                <li>{{ item }}</li>
+                            {% empty %}
+                                <li>No curriculum details available</li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{% url 'program_detail' program.id %}" style="color: white; text-decoration: none; font-weight: 600;">View Details →</a>
+                    </div>
+                {% empty %}
+                    <p>No additional programs available. Add programs via the admin site.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

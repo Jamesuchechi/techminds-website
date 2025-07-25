@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Techminds Academy - Empowering the next generation of technology leaders through innovative education and hands-on experience.">
+    <meta name="keywords" content="Techminds Academy, Technology, Education, Programs, Admissions, Coding, Learning, Next Admission, Global Learners">
+    <meta name="author" content="Techminds Academy">
+    <title>{% block title %}Techminds Academy{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techmindsacademy.com/">
+    <meta property="og:title" content="Techminds Academy">
+    <meta property="og:description" content="Empowering the next generation of technology leaders through innovative education and hands-on experience.">
+    <meta property="og:image" content="{% static 'images/logo.webp' %}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://techmindsacademy.com/">
+    <meta name="twitter:title" content="Techminds Academy">
+    <meta name="twitter:description" content="Empowering the next generation of technology leaders through innovative education and hands-on experience.">
+    <meta name="twitter:image" content="{% static 'images/logo.webp' %}">
+</head>
+<body>
+    <!-- Hero Section -->
+    {% block hero %}
+    <section class="hero-section">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="{% static 'images/hero-video.mp4' %}" type="video/mp4">
+            <div class="hero-fallback"></div>
+        </video>
+        <div class="hero-overlay">
+            <div class="container">
+                <h1 class="hero-title wow">Welcome to Techminds Academy</h1>
+                <p class="hero-subtitle awwn">Empower Your Future with Cutting-Edge Tech Education</p>
+                <div class="hero-cta">
+                    <a href="{% url 'next_admission' %}" class="btn-primary">Explore Next Admission</a>
+                    <a href="{% url 'apply' %}" class="btn-secondary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+   <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo" style="margin-left: -40px;">
+                <img src="{% static 'images/logo.webp' %}" width="120rem" alt="Techminds Academy Logo"/>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'programs' %}" class="nav-link">Programs</a></li>
+
+                <!-- Admissions Dropdown -->
+                <li class="dropdown">
+                    <a href="{% url 'admission_requirements' %}" class="nav-link dropdown-toggle">Admissions</a>
+                    <ul class="dropdown-content">
+                        <li><a href="{% url 'next_admission' %}">Next Admission</a></li>
+                        <li><a href="{% url 'global_learners' %}">Global Learners</a></li>
+                    </ul>
+                </li>
+
+                <!-- Facilities Dropdown -->
+                <li class="dropdown">
+                    <a href="{% url 'facilities' %}" class="nav-link dropdown-toggle">Facilities</a>
+                    <ul class="dropdown-content">
+                        <li><a href="{% url 'resources' %}">Resources</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="{% url 'testimonials' %}" class="nav-link">Testimonials</a></li>
+                <li><a href="{% url 'videos' %}" class="nav-link">Videos</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+            </ul>
+
+            <a href="{% url 'apply' %}" class="cta-button" style="margin-left: 50px;">Apply Now</a>
+            <div class="hamburger-button" id="hamburger-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="/" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="{% url 'programs' %}" onclick="closeMobileMenu()">Programs</a></li>
+            <li><a href="{% url 'next_admission' %}" onclick="closeMobileMenu()">Next Admission</a></li>
+            <li><a href="{% url 'global_learners' %}" onclick="closeMobileMenu()">Global Learners</a></li>
+            <li><a href="{% url 'admission_requirements' %}" onclick="closeMobileMenu()">Admissions</a></li>
+            <li><a href="{% url 'facilities' %}" onclick="closeMobileMenu()">Facilities</a></li>
+            <li><a href="{% url 'testimonials' %}" onclick="closeMobileMenu()">Testimonials</a></li>
+            <li><a href="{% url 'blog' %}" onclick="closeMobileMenu()">Blog</a></li>
+            <li><a href="{% url 'resources' %}" onclick="closeMobileMenu()">Resources</a></li>
+            <li><a href="{% url 'contact' %}" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+        <div class="mobile-cta">
+            <a href="{% url 'apply' %}" class="cta-button" onclick="closeMobileMenu()">Apply Now</a>
+        </div>
+    </div>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Techminds Academy</h3>
+                    <p>Empowering the next generation of technology leaders through innovative education and hands-on experience.</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="{% url 'mission_vision' %}">📋 About Us</a>
+                        <a href="{% url 'team' %}">👥 Our Team</a>
+                        <a href="{% url 'global_learners' %}">🌍 Global Learners</a>
+                        <a href="{% url 'testimonials' %}">💬 Testimonials</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="{% url 'programs' %}">Programs</a>
+                    <a href="{% url 'next_admission' %}">Next Admission</a>
+                    <a href="{% url 'global_learners' %}">Global Learners</a>
+                    <a href="{% url 'admission_requirements' %}">Admissions</a>
+                    <a href="{% url 'facilities' %}">Facilities</a>
+                    <a href="{% url 'blog' %}">Blog</a>
+                    <a href="{% url 'resources' %}">Resources</a>
+                    <a href="{% url 'applications' %}">Applications</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Programs</h3>
+                    <a href="{% url 'programs' %}">All Programs</a>
+                    <a href="{% url 'next_admission' %}">Next Admission</a>
+                    <a href="{% url 'application_process' %}">Application Process</a>
+                    <a href="{% url 'introduction' %}">Introduction</a>
+                    <a href="{% url 'search' %}">Search Programs</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="{% url 'faq' %}">FAQ</a>
+                    <a href="{% url 'contact' %}">Contact Support</a>
+                    <a href="{% url 'footer' %}">Site Information</a>
+                    <a href="{% url 'resources' %}">Student Resources</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Techminds Academy. All rights reserved. | <a href="{% url 'terms_conditions' %}">Privacy Policy</a> | <a href="{% url 'terms_conditions' %}">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

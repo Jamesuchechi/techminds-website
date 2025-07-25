@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Mission & Vision - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 100px 0; background: white; text-align: center;">
+    <div class="container">
+        <h1 class="wow">Our Mission & Vision</h1>
+        <p class="awwn">Guiding principles that drive our excellence in tech education.</p>
+        <div style="max-width: 800px; margin: 2rem auto; text-align: left;">
+            <h3>Mission</h3>
+            {% if mission_items %}
+                <ul>
+                {% for item in mission_items %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+                </ul>
+            {% elif mission_vision.mission %}
+                <p>{{ mission_vision.mission|safe|linebreaks }}</p>
+            {% else %}
+                <p>No mission statement available.</p>
+            {% endif %}
+            
+            <h3>Vision</h3>
+            {% if mission_vision.vision %}
+                <p>{{ mission_vision.vision|safe|linebreaks }}</p>
+            {% else %}
+                <p>No vision statement available.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

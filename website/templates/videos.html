@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Videos - Techminds Academy{% endblock %}
+{% block content %}
+    <!-- Videos Section -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <h2 class="section-title">Our Videos</h2>
+            <div class="videos-grid">
+                {% for video in videos %}
+                    <div class="video-card">
+                        <h3>{{ video.title|default:"Untitled Video" }}</h3>
+                        {% if video.thumbnail %}
+                            <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}" class="video-thumbnail">
+                        {% endif %}
+                        <p>{{ video.description|truncatewords:30|default:"No description available." }}</p>
+                        <iframe width="100%" height="315" src="{{ video.video_url|default:'https://www.youtube.com/embed/_OOeu-X3ovk' }}" title="{{ video.title|default:'Video' }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                {% empty %}
+                    <p>No videos available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

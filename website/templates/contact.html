@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block title %}Contact - Techminds Academy{% endblock %}
+{% block content %}
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
+            <div class="contact-grid animate-on-scroll">
+                <div class="contact-form">
+                    {% include 'forms/contact.html' %}
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    {% if contact %}
+                        <p>📍 <strong>Address:</strong><br>{{ contact.address|default:"Not specified" }}</p>
+                        <p>📞 <strong>Phone:</strong><br>{{ contact.phone|default:"Not specified" }}</p>
+                        <p>✉ <strong>Email:</strong><br>{{ contact.email|default:"Not specified" }}</p>
+                        <p>🌐 <strong>Website:</strong><br><a href="{{ contact.website|default:'#' }}" style="color: #60a5fa; text-decoration: none;">{{ contact.website|default:"Not specified" }}</a></p>
+                        <p>🕒 <strong>Office Hours:</strong><br>{{ contact.office_hours|default:"Monday - Friday: 9:00 AM - 6:00 PM, Saturday: 10:00 AM - 4:00 PM" }}</p>
+                        <div class="social-icons">
+                            {% for link in social_links %}
+                                <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" class="social-icon" title="{{ link.platform_name }}">
+                                    <i class="{{ link.icon_class }} fa-2x"></i>
+                                </a>
+                            {% empty %}
+                                <p>No social media links available.</p>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>No contact information available. Please add via admin.</p>
+                    {% endif %}
+                    <div class="mt-4">
+                        <a href="{% url 'contact_form' %}" class="btn-primary">More Contact Options</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

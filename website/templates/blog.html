@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block title %}Blog - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 100px 0; background: #eef2f7; text-align: center;">
+    <div class="container">
+        <h1 class="wow section-title">Our Blog</h1>
+        <p class="awwn">Stay updated with the latest in tech education and innovation.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+            {% for post in blog_posts %}
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                <h3><a href="{% url 'blog_detail' post.id %}" style="color: #007bff; text-decoration: none; transition: color 0.3s;">{{ post.title }}</a></h3>
+                <p>{{ post.content|truncatewords:20 }}</p>
+                <a href="{% url 'blog_detail' post.id %}" style="color: #007bff; text-decoration: none;">Read More</a>
+                <div style="margin-top: 1rem;">
+                    {% if post.image %}
+                    <img src="{{ post.image }}" alt="{{ post.title }}" style="max-width: 100%; border-radius: 10px;">
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <p>No blog posts available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

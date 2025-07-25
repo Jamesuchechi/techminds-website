@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block hero %}{% endblock %}
+{% block title %}Admission Requirements - Techminds Academy{% endblock %}
+{% block content %}
+<section style="padding: 120px 0; background: #eff6ff; text-align: center;">
+    <div class="container" style="max-width: 1000px; margin: 0 auto;">
+        <div style="padding-top: 40px;">
+            <h1 style="font-size: 3rem; font-weight: 700; color: #ebecf1; text-transform: uppercase; letter-spacing: 1.5px; animation: slideIn 1s ease-out; margin-bottom: 2.5rem;" class="section-title">Admission Requirements</h1>
+        </div>
+        <div class="animate-on-scroll" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            {% for requirement in requirements %}
+                <div style="background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px; transition: transform 0.3s, box-shadow 0.3s;">
+                    <h3 style="font-size: 1.5rem; font-weight: 600; color: #1e40af; margin-bottom: 1rem;">{{ requirement.title }}</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: #374151;">{{ requirement.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'apply' %}" class="btn" style="display: inline-block; margin-top: 3rem; background: #1e40af; color: #ffffff; padding: 14px 30px; border-radius: 30px; font-weight: 600; text-transform: uppercase; transition: transform 0.3s, background 0.3s;">Apply Now</a>
+    </div>
+</section>
+<style>
+    @keyframes slideIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    .btn:hover { transform: scale(1.05); background: #b4bbc8; }
+    div[style*="box-shadow"]:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
+    @media (max-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        div[style*="max-width: 400px"] { max-width: 100%; }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Team - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 100px 0; background: #eef2f7; text-align: center;">
+    <div class="container">
+        <h1 class="wow">Meet Our Team</h1>
+        <p class="awwn">Experts dedicated to your tech education journey.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+            {% for member in team %}
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+                    {% if member.image %}
+                        <img src="{{ member.image.url }}" alt="{{ member.name }}" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    {% endif %}
+                    <h3>{{ member.name }}</h3>
+                    <p><strong>Role:</strong> {{ member.role }}</p>
+                    <p>{{ member.bio }}</p>
+                </div>
+            {% empty %}
+                <p>No team members available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Search - Techminds Academy{% endblock %}
+{% block content %}
+<section class="fade-in" style="padding: 100px 0; background: #eef2f7; text-align: center;">
+    <div class="container">
+        <h1 class="wow">Search Our Offerings</h1>
+        <p class="awwn">Find the perfect program or resource with our powerful search tool.</p>
+        <form action="/search/" method="get" style="max-width: 600px; margin: 2rem auto;">
+            <input type="text" name="q" placeholder="Enter keywords..." style="width: 100%; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 25px; font-size: 1rem;">
+            <button type="submit" style="background: #1e3a8a; color: white; padding: 0.8rem 2rem; border: none; border-radius: 25px; margin-top: 1rem;">Search</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
